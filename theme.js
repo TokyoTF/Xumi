@@ -192,8 +192,8 @@
   function closeModal() { document.getElementById("xumi-modal-overlay")?.remove(); document.body.classList.remove("xumi-modal-open"); }
 
   function injectProfileItem(state) {
-    // The profile menu is a .main-contextMenu-menu containing "Preferencias"/"Preferences"/"Configuración"
-    const menus = document.querySelectorAll(".main-contextMenu-menu");
+    // Profile menu: new #context-menu ul[role="menu"] (legacy .main-contextMenu-menu fallback)
+    const menus = document.querySelectorAll('#context-menu ul[role="menu"], .main-contextMenu-menu');
     menus.forEach((menu) => {
       if (menu.querySelector("[data-xumi-item]")) return;
       const items = Array.from(menu.querySelectorAll("button, a, [role='menuitem']"));
@@ -201,14 +201,15 @@
         /preferencia|preference|configuraci|ajustes|settings/i.test(el.textContent || "")
       );
       if (prefIdx === -1) return; // not the profile menu
-      const tpl = items[prefIdx].cloneNode(true);
+      const prefEl = items[prefIdx];
+      const tpl = prefEl.cloneNode(true);
       tpl.setAttribute("data-xumi-item", "1");
       tpl.removeAttribute("href");
       // Replace text with "Configure Xumi"
-      const span = tpl.querySelector("span") || tpl;
       // If it has multiple spans, change the first one with text
-      const textSpan = Array.from(tpl.querySelectorAll("span")).find((s) => s.textContent.trim().length > 1) || tpl;
-      textSpan.textContent = "Configure Xumi";
+      const textSpan = Array.from(tpl.querySelectorAll("span")).find((s) => s.textContent.trim().length > 1);
+      if (textSpan) textSpan.textContent = "Configure Xumi";
+      else tpl.textContent = "Configure Xumi";
       tpl.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -217,9 +218,16 @@
         document.body.click();
         setTimeout(() => openModal(state), 100);
       });
-      // Insert below Preferences
-      const prefEl = items[prefIdx];
-      prefEl.parentElement.insertBefore(tpl, prefEl.nextSibling);
+      // Insert below Preferences (wrapped in li for the new menu structure)
+      const prefLi = prefEl.closest("li");
+      if (prefLi && prefLi.parentElement === menu) {
+        const li = document.createElement("li");
+        li.setAttribute("role", "presentation");
+        li.appendChild(tpl);
+        prefLi.after(li);
+      } else {
+        prefEl.parentElement.insertBefore(tpl, prefEl.nextSibling);
+      }
     });
   }
 

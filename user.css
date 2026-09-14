@@ -4,7 +4,7 @@
     --border-radius: 12px;
     --os-windows-icon-dodge: 0;
     /* Custom window controls: tweak them to your liking */
-    --xumi-wc-size: 32px;
+    --xumi-wc-size: 37px;
     --xumi-wc-gap: 4px;
     --xumi-wc-bg: transparent;
     --xumi-wc-hover: rgba(255, 255, 255, 0.22);
@@ -26,7 +26,7 @@
     --encore-icon-fill: white !important;
     --spice-subtext: #cecece !important;
     --spice-main-elevated: #a5a5a53d !important;
-    --spice-highlight-elevated: rgb(63 63 63 / 80%) !important;
+    --spice-highlight-elevated: rgb(63 63 63 / 97%) !important;tant;
 }
 
 /* Custom window buttons */
@@ -52,7 +52,7 @@ body.xumi-custom-wc .Titlebar {
     -webkit-app-region: no-drag !important;
     app-region: no-drag !important;
     pointer-events: auto !important;
-    width: 40px;
+    width: 45px;
     height: var(--xumi-wc-size);
     border-radius: var(--xumi-wc-radius);
     background: var(--xumi-wc-bg);
@@ -118,6 +118,17 @@ div[class*="Root__right-sidebar"],
     background-color: var(--xumi-main-primary) !important;
 }
 
+.main-view-container__scroll-node-child main > div > div{
+    background-color: transparent !important;
+    background-image: none !important;
+    display: none !important;
+}
+
+.main-actionButtons-spacer.main-actionButtons {
+    width: 100px;
+    background-color: transparent !important;
+}
+
 .main-home-homeHeader {
     background-color: transparent !important;
 }
@@ -158,6 +169,28 @@ div[class*="Root__right-sidebar"],
     overflow: inherit !important;
 }
 
+/* New profile/context menu (#context-menu): same glass design */
+#context-menu [role="menu"] {
+    background: rgb(63 63 63 / 80%) !important;
+    border: 1px solid rgb(255 255 255 / 20%) !important;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    border-radius: var(--border-radius) !important;
+    padding: 4px !important;
+    list-style: none !important;
+    overflow-y: inherit !important;
+}
+#context-menu [role="menuitem"],
+#context-menu [role="menuitemcheckbox"] {
+    border-radius: 8px !important;
+    transition: background 0.12s ease !important;
+}
+#context-menu [role="menuitem"]:hover,
+#context-menu [role="menuitemcheckbox"]:hover,
+#context-menu [role="menuitem"]:focus-visible {
+    background: var(--xumi-wc-hover) !important;
+}
+
 /* (Native controls hidden via --transparent-window-controls flag) */
 .main-card-card,
 .main-contextMenu-menu {
@@ -195,9 +228,9 @@ div[class*="Root__globalNav"] {
 /* Marketplace / custom navlinks: same style as window buttons */
 .custom-navlinks-scrollable_container button.custom-navlink,
 button.custom-navlink {
-    width: 40px !important;
-    height: 32px !important;
-    min-width: 40px !important;
+    width: 45px !important;
+    height: 37px !important;
+    min-width: 45px !important;
     border-radius: var(--xumi-wc-radius) !important;
     background: var(--xumi-wc-bg) !important;
     border: none !important;
@@ -206,9 +239,7 @@ button.custom-navlink {
     align-items: center !important;
     justify-content: center !important;
     padding: 0 !important;
-    transition:
-        background 0.12s ease,
-        color 0.12s ease !important;
+    transition: background 0.12s ease, color 0.12s ease !important;
 }
 .custom-navlinks-scrollable_container button.custom-navlink svg,
 button.custom-navlink svg {
@@ -279,28 +310,13 @@ div[class*="searchInputSection"] {
 .main-globalNav-searchInputSection input::placeholder {
     color: var(--xumi-wc-icon) !important;
 }
-/* Inner magnifier at the same size as the rest (16px) */
-.main-globalNav-searchInputSection .e-10810-form-input-icon__icon--leading svg,
-.main-globalNav-searchInputSection
-    .e-10810-form-input-icon__icon--leading
-    .e-10810-icon {
+/* Search icons at the same size as the rest (16px, version-agnostic) */
+.main-globalNav-searchInputSection [data-encore-id="icon"] {
     width: 16px !important;
     height: 16px !important;
 }
-.main-globalNav-searchInputSection
-    .e-10810-form-input-icon__icon--leading
-    button {
+.main-globalNav-searchInputSection [class*="--leading"] button {
     color: var(--xumi-wc-icon) !important;
-}
-/* Trailing icons (clear + browse) at the same size */
-.main-globalNav-searchInputSection .e-10810-form-input-icon__icon--trailing svg,
-.main-globalNav-searchInputSection
-    .e-10810-form-input-icon__icon--trailing
-    .e-10810-icon,
-.main-globalNav-browseButtonWrapper svg,
-.main-globalNav-browseButtonWrapper .e-10810-icon {
-    width: 16px !important;
-    height: 16px !important;
 }
 .main-globalNav-browseButtonWrapper button {
     color: var(--xumi-wc-icon) !important;
@@ -309,10 +325,10 @@ div[class*="searchInputSection"] {
     color: var(--xumi-wc-icon-hover) !important;
 }
 /* Buddy Feed: same style as window buttons */
-.main-topBar-buddyFeed {
-    width: 40px !important;
-    height: 32px !important;
-    min-width: 40px !important;
+.main-globalNav-buddyFeed {
+    width: 45px !important;
+    height: 37px !important;
+    min-width: 45px !important;
     border-radius: var(--xumi-wc-radius) !important;
     background: var(--xumi-wc-bg) !important;
     border: none !important;
@@ -321,20 +337,18 @@ div[class*="searchInputSection"] {
     align-items: center !important;
     justify-content: center !important;
     padding: 0 !important;
-    transition:
-        background 0.12s ease,
-        color 0.12s ease !important;
+    transition: background 0.12s ease, color 0.12s ease !important;
 }
-.main-topBar-buddyFeed svg {
+.main-globalNav-buddyFeed svg {
     width: 16px !important;
     height: 16px !important;
 }
-.main-topBar-buddyFeed:hover {
+.main-globalNav-buddyFeed:hover {
     background: var(--xumi-wc-hover) !important;
     color: var(--xumi-wc-icon-hover) !important;
     transform: none !important;
 }
-.main-topBar-buddyFeed:active {
+.main-globalNav-buddyFeed:active {
     opacity: 0.7 !important;
 }
 /* The gray background comes from the inner form: force it transparent */
@@ -371,12 +385,9 @@ div[class*="searchInputSection"] {
     border-radius: 50% !important;
 }
 /* The gray background comes from the inner form: force it transparent */
-.main-globalNav-searchInputContainer,
-.main-globalNav-searchInputContainer .main-topBar-searchBar,
-input.main-topBar-searchBar.x-searchInput-searchInputInput {
+.main-globalNav-searchInputContainer, .main-globalNav-searchInputContainer .main-topBar-searchBar, input.main-topBar-searchBar.x-searchInput-searchInputInput {
     background: transparent !important;
     background-color: var(--xumi-main-primary) !important;
-    border-radius: 14px;
     backdrop-filter: blur(7px);
     border: 1px solid rgb(255 255 255 / 10%) !important;
     box-shadow: none !important;
@@ -386,7 +397,7 @@ input.main-topBar-searchBar.x-searchInput-searchInputInput {
     height: 40px !important;
     min-height: 40px !important;
 }
-.main-globalNav-searchInputContainer .main-topBar-searchBar:placeholder-shown {
+.main-globalNav-searchInputWrapper input {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     height: 40px !important;
@@ -394,6 +405,10 @@ input.main-topBar-searchBar.x-searchInput-searchInputInput {
     min-height: 40px !important;
     font-size: 14px !important;
 }
+.main-globalNav-searchInputWrapper input:focus {
+    box-shadow: none !important;
+}
+
 /* Header floating above the content (no offset) */
 /* The black comes from the parent: make it transparent so the header has no background */
 .Root__top-container,
@@ -1258,7 +1273,18 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     margin-top: 20px;
 }
 
-.e-10810-button-primary__inner {
+.main-entityHeader-container.main-entityHeader-containerNormal > div {
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+.main-view-container__scroll-node-child > main > section > div:nth-child(2) {
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+/* data-encore-id and class suffixes survive Encore renames (e-10810 -> e-10860) */
+[class*="button-primary__inner"] {
     background: #00000078 !important;
     backdrop-filter: blur(8px);
 }
@@ -1271,21 +1297,26 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     background: transparent !important;
 }
 
-.main-contextMenu-tippy {
-    background: rgb(63 63 63 / 80%) !important;
-    backdrop-filter: blur(7px);
+[data-tippy-root] #context-menu > div {
+    background: #00000078 !important;
+    backdrop-filter: blur(8px);
+    border-radius: 64px !important;
 }
 
 .main-globalNav-contentRight {
     margin-left: auto;
 }
 
-.main-globalNav-contentRight .main-topBar-topbarContentRight:not(.link-subtle) {
+#global-nav-bar > div.main-globalNav-contentRight > div.main-globalNav-contentRightSpacer {
     display: none !important;
 }
 
 .Root__now-playing-bar {
     background: transparent !important;
+}
+
+.main-globalNav-navLink.main-actionButtons {
+    margin-right: 42px;
 }
 
 #marketplace-readme {
@@ -1342,4 +1373,16 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     padding:4px;
     backdrop-filter: blur(7px);
     border: 1px solid rgb(255 255 255 / 10%) !important;
+}
+
+.main-globalNav-navLink.main-actionButtons > button {
+    background-color: transparent !important;
+    width: 32px !important;
+    height: 32px !important;
+}
+.main-globalNav-navLink.main-actionButtons > button span {
+    line-height: 34px !important;
+}
+.e-10860-icon {
+    width: 18px !important;
 }
