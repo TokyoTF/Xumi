@@ -118,6 +118,10 @@ div[class*="Root__right-sidebar"],
     background-color: var(--xumi-main-primary) !important;
 }
 
+.main-home-homeHeader {
+    background-color: transparent !important;
+}
+
 .main-yourLibraryX-libraryRootlist {
     padding: 0 !important;
     gap: 0 !important;
@@ -128,10 +132,7 @@ div[class*="Root__right-sidebar"],
 }
 
 .main-trackList-trackListContainer .main-rootlist-wrapper {
-    padding-left: 0px !important;
-    padding-block: 5px !important;
-    padding-inline: 5px !important;
-    border-radius: 10px;
+    background-color: transparent !important;
 }
 
 .main-trackList-trackListRow {
@@ -151,6 +152,10 @@ div[class*="Root__right-sidebar"],
     background: rgb(63 63 63 / 80%) !important;
     border: 1px solid rgb(255 255 255 / 20%) !important;
     backdrop-filter: blur(7px);
+}
+
+.main-contextMenu-menu {
+    overflow: inherit !important;
 }
 
 /* (Native controls hidden via --transparent-window-controls flag) */
@@ -370,8 +375,10 @@ div[class*="searchInputSection"] {
 .main-globalNav-searchInputContainer .main-topBar-searchBar,
 input.main-topBar-searchBar.x-searchInput-searchInputInput {
     background: transparent !important;
-    background-color: #7676765e !important;
-    border: none !important;
+    background-color: var(--xumi-main-primary) !important;
+    border-radius: 14px;
+    backdrop-filter: blur(7px);
+    border: 1px solid rgb(255 255 255 / 10%) !important;
     box-shadow: none !important;
     border-radius: var(--xumi-wc-radius) !important;
     color: var(--xumi-wc-icon-hover) !important;
@@ -421,10 +428,9 @@ div[class*="Root__nav-bar"] {
     min-width: 480px !important;
     margin: 0 !important;
     border-radius: 999px !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
-    background: rgb(63 63 63 / 65%) !important;
-    backdrop-filter: blur(20px) saturate(1.4) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(1.4) !important;
+    background-color: #62626287 !important;
+    backdrop-filter: blur(16px);
+    border: 1px solid rgb(255 255 255 / 10%) !important;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45) !important;
     overflow: hidden;
     z-index: 100 !important;
@@ -498,8 +504,8 @@ body.xumi-hide-play footer button[aria-label="Play" i] {
     z-index: 0 !important;
     background-size: cover !important;
     background-position: center !important;
-    filter: blur(15px) brightness(0.4) !important;
-    opacity: 0.3 !important;
+    filter: blur(var(--xumi-bg-bgBlur, 24px)) brightness(var(--xumi-bg-bgBright, 0.6)) !important;
+    opacity: var(--xumi-bg-bgOpacity, 0.6) !important;
     pointer-events: none !important;
     transition: opacity 0.45s ease-in-out !important;
 }
@@ -815,6 +821,17 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
+}
+.xumi-row .xumi-val {
+    font-size: 12px;
+    opacity: 0.6;
+    min-width: 44px;
+    text-align: right;
+}
+.xumi-slider-row input[type="range"] {
+    width: 120px;
+    accent-color: #7c5cff;
+    cursor: pointer;
 }
 /* Switch */
 .xumi-switch {
@@ -1214,10 +1231,16 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
 
 .main-trackList-trackListHeader {
     background: transparent !important;
-    background-color: var(--xumi-main-primary) !important;
     border-bottom: 0px !important;
     box-shadow: none !important;
+    top:76px !important;
+}
+
+.main-trackList-trackListHeader > div > div {
+    background-color: var(--xumi-main-primary) !important;
+    border-radius: 14px;
     backdrop-filter: blur(7px);
+    border: 1px solid rgb(255 255 255 / 10%) !important;
 }
 
 .main-topBar-background {
@@ -1236,7 +1259,8 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
 }
 
 .e-10810-button-primary__inner {
-    background: #5d5d5d !important;
+    background: #00000078 !important;
+    backdrop-filter: blur(8px);
 }
 
 .playlist-playlist-actionBarBackground-background {
@@ -1285,7 +1309,6 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
 }
 
 .before-scroll-node div > div:nth-child(2) {
-    height: 45%;
     background:transparent !important;
 }
 
@@ -1303,4 +1326,20 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     bottom:0;
     backdrop-filter: blur(7px);
     mask-image: linear-gradient(black, transparent);
+}
+
+.os-scrollbar-horizontal {
+    opacity: 0 !important;
+}
+
+.main-trackList-trackListHeaderRow {
+    border-bottom: none !important;
+}
+
+.main-trackList-trackListContainer .main-rootlist-wrapper > div:nth-child(2)  {
+    background-color: var(--xumi-main-primary) !important;
+    border-radius: 14px;
+    padding:4px;
+    backdrop-filter: blur(7px);
+    border: 1px solid rgb(255 255 255 / 10%) !important;
 }

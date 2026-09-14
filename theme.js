@@ -92,6 +92,19 @@
     }
     return (OPTIONS.find((o) => o.id === id) || {}).icon || "";
   }
+  const BG = [
+    { id: "bgBlur", label: "Blur", min: 0, max: 60, step: 1, unit: "px", def: 24 },
+    { id: "bgOpacity", label: "Opacity", min: 0, max: 1, step: 0.05, unit: "", def: 0.6 },
+    { id: "bgBright", label: "Brightness", min: 0, max: 1.5, step: 0.05, unit: "", def: 0.6 },
+  ];
+  function bgVal(state, o) {
+    const v = parseFloat(state[o.id]);
+    return Number.isFinite(v) ? Math.min(o.max, Math.max(o.min, v)) : o.def;
+  }
+  function applyBg(state) {
+    const root = document.documentElement;
+    BG.forEach((o) => root.style.setProperty("--xumi-bg-" + o.id, bgVal(state, o) + o.unit));
+  }
   function apply(state) {
     OPTIONS.forEach((o) => {
       const hide = state[o.id] === false;
@@ -103,6 +116,7 @@
     document.body.classList.toggle("xumi-hide-npv", state.hideNpv !== false);
     // Custom window controls mode: used to collapse the native titlebar via CSS
     document.body.classList.toggle("xumi-custom-wc", state.customWc !== false);
+    applyBg(state);
   }
 
   function openModal(state) {
@@ -143,6 +157,28 @@
         save(state);
         apply(state);
       });
+      modal.appendChild(row);
+    });
+    const bgH = document.createElement("h2");
+    bgH.textContent = "Background";
+    bgH.style.marginTop = "16px";
+    modal.appendChild(bgH);
+    BG.forEach((o) => {
+      const row = document.createElement("div");
+      row.className = "xumi-row xumi-slider-row";
+      const val = bgVal(state, o);
+      row.innerHTML =
+        '<span class="xumi-label"><span>' + o.label + '</span><span class="xumi-val">' + val + o.unit + "</span></span>" +
+        '<input type="range" min="' + o.min + '" max="' + o.max + '" step="' + o.step + '" value="' + val + '" data-id="' + o.id + '">';
+      const input = row.querySelector("input");
+      const valEl = row.querySelector(".xumi-val");
+      input.addEventListener("input", (e) => {
+        const v = parseFloat(e.target.value);
+        state[o.id] = v;
+        valEl.textContent = v + o.unit;
+        applyBg(state);
+      });
+      input.addEventListener("change", () => save(state));
       modal.appendChild(row);
     });
     overlay.appendChild(modal);
@@ -241,7 +277,6 @@
     return Spicetify.Platform?.FocusMainWindowAPI?._windowStateClient || null;
   }
   async function winAction(kind, btn) {
-    if (btn) { btn.style.outline = "2px solid #7c5cff"; setTimeout(() => (btn.style.outline = ""), 500); }
     const c = wc();
     try {
       if (c) {
