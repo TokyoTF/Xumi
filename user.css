@@ -26,7 +26,7 @@
     --encore-icon-fill: white !important;
     --spice-subtext: #cecece !important;
     --spice-main-elevated: #a5a5a53d !important;
-    --spice-highlight-elevated:rgb(63 63 63 / 80%) !important;
+    --spice-highlight-elevated: rgb(63 63 63 / 80%) !important;
 }
 
 /* Custom window buttons */
@@ -125,12 +125,11 @@ div[class*="Root__right-sidebar"],
 
 .main-rootlist-wrapper {
     padding-left: 4px !important;
-    
 }
 
 .main-trackList-trackListContainer .main-rootlist-wrapper {
     padding-left: 0px !important;
-    padding-block:5px !important;
+    padding-block: 5px !important;
     padding-inline: 5px !important;
     border-radius: 10px;
 }
@@ -539,11 +538,11 @@ body.xumi-hide-cover .main-nowPlayingWidget-coverArt {
 body.xumi-hide-npv .Root__right-sidebar,
 body.xumi-hide-npv aside[class*="right-sidebar"],
 body.xumi-hide-npv .Root__right-sidebar-peekContent {
-  display: none !important;
+    display: none !important;
 }
 
 /* ===== Marketplace extension cards ===== */
-.main-card-card.marketplace-card--extension ,
+.main-card-card.marketplace-card--extension,
 .main-card-card.marketplace-card--snippet,
 .main-card-card.marketplace-card--app {
     background: rgb(66 66 66 / 65%) !important;
@@ -560,7 +559,9 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
 .main-card-card.marketplace-card--app:hover {
     transform: translateY(-3px) !important;
     border-color: rgb(125 125 125 / 50%) !important;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), 0 0 0 1px rgb(66 66 66 / 25%) !important;
+    box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgb(66 66 66 / 25%) !important;
 }
 .main-card-card.marketplace-card--extension .main-card-imageContainer,
 .main-card-card.marketplace-card--snippet .main-card-imageContainer,
@@ -584,7 +585,7 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     --minimumColumnWidth: 340px !important;
     --grid-gap: 9px !important;
 }
-.main-card-card.marketplace-card--extension ,
+.main-card-card.marketplace-card--extension,
 .main-card-card.marketplace-card--snippet,
 .main-card-card.marketplace-card--app {
     padding: 0 !important;
@@ -648,7 +649,7 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     display: flex !important;
     align-items: start !important;
     gap: 4px !important;
-    margin-bottom :4px !important;
+    margin-bottom: 4px !important;
     font-size: 14px !important;
     opacity: 0.85 !important;
 }
@@ -666,10 +667,12 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
 .main-card-card.marketplace-card--extension:hover,
 .main-card-card.marketplace-card--snippet:hover,
 .main-card-card.marketplace-card--app:hover,
-.main-card-card.marketplace-card--extension:hover .main-card-PlayButtonContainer,
+.main-card-card.marketplace-card--extension:hover
+    .main-card-PlayButtonContainer,
 .main-card-card.marketplace-card--snippet:hover .main-card-PlayButtonContainer,
 .main-card-card.marketplace-card--app:hover .main-card-PlayButtonContainer,
-.main-card-card.marketplace-card--extension .main-card-PlayButtonContainerVisible,
+.main-card-card.marketplace-card--extension
+    .main-card-PlayButtonContainerVisible,
 .main-card-card.marketplace-card--snippet .main-card-PlayButtonContainerVisible,
 .main-card-card.marketplace-card--app .main-card-PlayButtonContainerVisible {
     opacity: 1 !important;
@@ -699,7 +702,7 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
 }
 
 .Dropdown-arrow-wrapper {
-    padding-left:14px !important;
+    padding-left: 14px !important;
 }
 
 /* ===== Config button in navbar ===== */
@@ -718,7 +721,9 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     margin-left: 8px;
     padding: 0;
     flex-shrink: 0;
-    transition: background 0.12s ease, color 0.12s ease;
+    transition:
+        background 0.12s ease,
+        color 0.12s ease;
 }
 #xumi-config-btn:hover {
     background: var(--xumi-wc-hover);
@@ -887,13 +892,16 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     white-space: nowrap !important;
     text-decoration: none !important;
     border-bottom: none !important;
-    transition: background 0.12s ease, color 0.12s ease !important;
+    transition:
+        background 0.12s ease,
+        color 0.12s ease !important;
 }
 .marketplace-tabBar-headerItem .marketplace-tabBar-headerItemLink:hover {
     background: var(--xumi-wc-hover) !important;
     color: var(--xumi-wc-icon-hover) !important;
 }
-.marketplace-tabBar-headerItem .marketplace-tabBar-headerItemLink.marketplace-tabBar-active {
+.marketplace-tabBar-headerItem
+    .marketplace-tabBar-headerItemLink.marketplace-tabBar-active {
     background: var(--xumi-main-primary) !important;
     color: #fff !important;
 }
@@ -906,7 +914,10 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     overflow: hidden !important;
     padding: 0 !important;
     position: relative !important;
-    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease !important;
+    transition:
+        transform 0.15s ease,
+        border-color 0.15s ease,
+        box-shadow 0.15s ease !important;
 }
 .main-card-card.marketplace-card--theme:hover {
     transform: translateY(-3px) !important;
@@ -951,7 +962,12 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     content: "" !important;
     position: absolute !important;
     inset: 0 !important;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.55) 45%, transparent 70%) !important;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.88) 0%,
+        rgba(0, 0, 0, 0.55) 45%,
+        transparent 70%
+    ) !important;
     pointer-events: none !important;
 }
 .main-card-card.marketplace-card--theme .main-card-cardMetadata {
@@ -977,7 +993,8 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
 .main-card-card.marketplace-card--theme .marketplace-card__tag {
     display: none !important;
 }
-.main-card-card.marketplace-card--theme .marketplace-card__tag[data-tag="external JS"] {
+.main-card-card.marketplace-card--theme
+    .marketplace-card__tag[data-tag="external JS"] {
     display: inline-block !important;
     font-size: 10px !important;
     font-weight: 700 !important;
@@ -1000,7 +1017,9 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     z-index: 2 !important;
     opacity: 0 !important;
     transform: translateY(-4px) !important;
-    transition: opacity 0.15s ease, transform 0.15s ease !important;
+    transition:
+        opacity 0.15s ease,
+        transform 0.15s ease !important;
 }
 .main-card-card.marketplace-card--theme:hover .main-card-PlayButtonContainer {
     opacity: 1 !important;
@@ -1024,7 +1043,9 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     align-items: center !important;
     justify-content: center !important;
     opacity: 0 !important;
-    transition: opacity 0.15s ease, background 0.12s ease !important;
+    transition:
+        opacity 0.15s ease,
+        background 0.12s ease !important;
 }
 .main-card-card.marketplace-card--theme:hover .xumi-gh-btn {
     opacity: 1 !important;
@@ -1146,7 +1167,9 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     justify-content: center !important;
     padding: 0 !important;
     cursor: pointer !important;
-    transition: background 0.12s ease, color 0.12s ease !important;
+    transition:
+        background 0.12s ease,
+        color 0.12s ease !important;
 }
 .marketplace-header-icon-button svg {
     width: 16px !important;
@@ -1242,8 +1265,14 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     background: transparent !important;
 }
 
-
 .main-globalNav-searchInputWrapper #search-dropdown > div {
     backdrop-filter: blur(7px);
     border: 1px solid rgb(255 255 255 / 20%) !important;
+}
+
+.x-explicit-label {
+    background-color: #27272787 !important;
+    color: white !important;
+    line-height: 14px !important;
+    font-size: 11px !important;
 }
