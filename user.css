@@ -1000,6 +1000,33 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     opacity: 1 !important;
     transform: none !important;
 }
+/* Dedicated GitHub button (top-left, JS-injected) */
+.main-card-card.marketplace-card--theme .xumi-gh-btn {
+    position: absolute !important;
+    top: 8px !important;
+    left: 8px !important;
+    z-index: 2 !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 8px !important;
+    background: rgba(0, 0, 0, 0.55) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    color: #fff !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 0 !important;
+    transition: opacity 0.15s ease, background 0.12s ease !important;
+}
+.main-card-card.marketplace-card--theme:hover .xumi-gh-btn {
+    opacity: 1 !important;
+}
+.main-card-card.marketplace-card--theme .xumi-gh-btn:hover {
+    background: rgba(255, 255, 255, 0.14) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+}
 
 /* ===== Dropdowns (sort / More): Xumi style ===== */
 .Dropdown-menu {
