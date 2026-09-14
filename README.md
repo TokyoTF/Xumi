@@ -16,6 +16,16 @@ Modern dark Spicetify theme with custom window controls, cover-art blurred backg
 <img width="700" height="400" alt="settings" src="https://github.com/user-attachments/assets/c5b48e5d-c5e3-4ecf-9e7f-1eaaec1720e5" />
 
 
+## Configure Xumi
+
+Click your profile picture (top right) and choose **Configure Xumi**. A panel opens with:
+
+- **Player**: toggle each player bar icon (shuffle, previous, play/pause, next, repeat, lyrics, mini player, volume, devices, queue, fullscreen, cover art).
+- **General**:
+  - *Hide Now Playing view on startup* — closes the right sidebar when Spotify launches.
+  - *Hide Now Playing view (display none)* — removes it completely via CSS.
+  - *Custom window buttons* — replaces the native minimize/maximize/close with Xumi's own (disable to go back to native).
+
 ## Install (manual)
 
 1. Copy this folder to your Spicetify themes directory:
