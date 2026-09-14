@@ -13,6 +13,9 @@ Modern dark Spicetify theme with custom window controls, cover-art blurred backg
 - **Now Playing view**: auto-close on startup and/or hide via CSS
 - **Redesigned Marketplace**: segmented tab bar, segmented sort/search header, styled dropdowns, horizontal extension/snippet/app cards, overlay theme cards
 
+<img width="700" height="400" alt="settings" src="https://github.com/user-attachments/assets/c5b48e5d-c5e3-4ecf-9e7f-1eaaec1720e5" />
+
+
 ## Install (manual)
 
 1. Copy this folder to your Spicetify themes directory:
