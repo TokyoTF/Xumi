@@ -1256,7 +1256,7 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     margin-left: auto;
 }
 
-.main-topBar-topbarContentRight {
+.main-globalNav-contentRight .main-topBar-topbarContentRight:not(.link-subtle) {
     display: none !important;
 }
 
@@ -1279,4 +1279,7 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     color: white !important;
     line-height: 14px !important;
     font-size: 11px !important;
+}
+.main-topBar-topbarContentRight {
+    margin-right: 26px;
 }
