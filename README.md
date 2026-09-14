@@ -13,9 +13,6 @@ Modern dark Spicetify theme with custom window controls, cover-art blurred backg
 - **Now Playing view**: auto-close on startup and/or hide via CSS
 - **Redesigned Marketplace**: segmented tab bar, segmented sort/search header, styled dropdowns, horizontal extension/snippet/app cards, overlay theme cards
 
-<img width="700" height="400" alt="settings" src="https://github.com/user-attachments/assets/c5b48e5d-c5e3-4ecf-9e7f-1eaaec1720e5" />
-
-
 ## Configure Xumi
 
 Click your profile picture (top right) and choose **Configure Xumi**. A panel opens with:
@@ -25,6 +22,8 @@ Click your profile picture (top right) and choose **Configure Xumi**. A panel op
   - *Hide Now Playing view on startup* — closes the right sidebar when Spotify launches.
   - *Hide Now Playing view (display none)* — removes it completely via CSS.
   - *Custom window buttons* — replaces the native minimize/maximize/close with Xumi's own (disable to go back to native).
+
+<img width="700" height="400" alt="settings" src="https://github.com/user-attachments/assets/c5b48e5d-c5e3-4ecf-9e7f-1eaaec1720e5" />
 
 ## Install (manual)
 

@@ -1283,3 +1283,24 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
 .main-topBar-topbarContentRight {
     margin-right: 26px;
 }
+
+.before-scroll-node div > div:nth-child(2) {
+    height: 45%;
+    background:transparent !important;
+}
+
+.before-scroll-node div > div:nth-child(1) {
+    height: 45%;
+    mask-image: linear-gradient(black, transparent);
+}
+
+.main-entityHeader-container.main-entityHeader-withBackgroundImage {
+    height: 42vh !important;
+}
+
+.before-scroll-node div > div:nth-child(2)::after {
+    background-image: none !important;
+    bottom:0;
+    backdrop-filter: blur(7px);
+    mask-image: linear-gradient(black, transparent);
+}
