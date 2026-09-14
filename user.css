@@ -1256,6 +1256,10 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     margin-left: auto;
 }
 
+.main-topBar-topbarContentRight {
+    display: none !important;
+}
+
 .Root__now-playing-bar {
     background: transparent !important;
 }
