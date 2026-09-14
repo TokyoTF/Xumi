@@ -7,7 +7,7 @@
     --xumi-wc-size: 32px;
     --xumi-wc-gap: 4px;
     --xumi-wc-bg: transparent;
-    --xumi-wc-hover: rgba(255, 255, 255, 0.1);
+    --xumi-wc-hover: rgba(255, 255, 255, 0.22);
     --xumi-wc-close: #cf4646;
     --xumi-wc-icon: #c9c9d4;
     --xumi-wc-icon-hover: #ffffff;
@@ -365,7 +365,7 @@ div[class*="searchInputSection"] {
 .main-globalNav-searchInputContainer .main-topBar-searchBar,
 input.main-topBar-searchBar.x-searchInput-searchInputInput {
     background: transparent !important;
-    background-color: var(--xumi-wc-hover) !important;
+    background-color: #7676765e !important;
     border: none !important;
     box-shadow: none !important;
     border-radius: var(--xumi-wc-radius) !important;

@@ -256,9 +256,11 @@
   let wcMode = null; // 'custom' | 'native'
   function setNativeButtons(show) {
     // Our own logic: hide natives when customs are on, bring them back when off.
-    // Visibility only: never touch the native titlebar height.
+    // The native strip must collapse to 1px in custom mode: even hidden, its
+    // hit-test area otherwise covers our buttons and kills their hover.
     // Fire-and-forget in parallel: a stalled call must not block the rest.
     const jobs = [];
+    const height = show ? 64 : 1; // 64px = Spotify default titlebar
     try {
       const p = Spicetify.Platform?.NativeAPI?.setWindowButtonsVisibility?.(show);
       if (p?.catch) jobs.push(p.catch(() => {}));
@@ -268,6 +270,10 @@
       if (!client) continue;
       try {
         const p = client.setButtonsVisibility({ showButtons: show });
+        if (p?.catch) jobs.push(p.catch(() => {}));
+      } catch (e) {}
+      try {
+        const p = client.updateTitlebarHeight({ height });
         if (p?.catch) jobs.push(p.catch(() => {}));
       } catch (e) {}
     }
