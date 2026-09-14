@@ -1,0 +1,10 @@
+{
+  "name": "Xumi",
+  "description": "Modern dark theme with custom window controls, cover-art blurred background, glass player and redesigned Marketplace.",
+  "preview": "preview.png",
+  "readme": "README.md",
+  "usercss": "user.css",
+  "schemes": "color.ini",
+  "authors": [{ "name": "TokyoTF", "url": "https://github.com/TokyoTF" }],
+  "tags": ["dark", "minimal", "glass", "violet"]
+}

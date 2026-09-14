@@ -1,0 +1,1216 @@
+/* Xumi - modern dark theme with violet accent */
+
+:root {
+    --border-radius: 12px;
+    --os-windows-icon-dodge: 0;
+    /* Custom window controls: tweak them to your liking */
+    --xumi-wc-size: 32px;
+    --xumi-wc-gap: 4px;
+    --xumi-wc-bg: transparent;
+    --xumi-wc-hover: rgba(255, 255, 255, 0.1);
+    --xumi-wc-close: #cf4646;
+    --xumi-wc-icon: #c9c9d4;
+    --xumi-wc-icon-hover: #ffffff;
+    --xumi-wc-radius: 70px;
+    --xumi-main-primary: rgb(207 207 207 / 10%) !important;
+    --spice-main: #12121a !important;
+
+    --xumi-color-bgmain: #2d2d2d !important;
+
+    --spice-card: rgba(150, 150, 165, 0.12) !important;
+    --spice-shadow: rgba(0, 0, 0, 0.3) !important;
+    --spice-tab-active: rgba(150, 150, 165, 0.18) !important;
+    --spice-misc: rgba(150, 150, 165, 0.15) !important;
+    --background-base: #dfdfdf36 !important;
+    --spice-button-active: #c0c0c0 !important;
+    --encore-icon-fill: white !important;
+    --spice-subtext: #cecece !important;
+    --spice-main-elevated: #a5a5a53d !important;
+    --spice-highlight-elevated:rgb(63 63 63 / 80%) !important;
+}
+
+/* Custom window buttons */
+#xumi-wc {
+    display: flex;
+    align-items: center;
+    gap: var(--xumi-wc-gap);
+    padding-right: 8px;
+    -webkit-app-region: no-drag !important;
+    app-region: no-drag !important;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 9999;
+    padding-right: 25px;
+}
+#xumi-wc button {
+    -webkit-app-region: no-drag !important;
+    app-region: no-drag !important;
+    pointer-events: auto !important;
+    width: 40px;
+    height: var(--xumi-wc-size);
+    border-radius: var(--xumi-wc-radius);
+    background: var(--xumi-wc-bg);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.12s ease;
+}
+#xumi-wc button svg {
+    width: 12px;
+    height: 12px;
+    color: var(--xumi-wc-icon);
+    transition: color 0.12s ease;
+}
+#xumi-wc button:hover {
+    background: var(--xumi-wc-hover);
+    transform: none;
+}
+#xumi-wc button:hover svg {
+    color: var(--xumi-wc-icon-hover);
+}
+#xumi-wc button[data-xumi-wc="close"]:hover {
+    background: var(--xumi-wc-close);
+}
+#xumi-wc button[data-xumi-wc="close"]:hover svg {
+    color: #fff;
+}
+#xumi-wc button:active {
+    opacity: 0.7;
+}
+
+/* ===== Xumi Gray glass: replaces blacks with glass ===== */
+
+.Root__top-container {
+    gap: 0px !important;
+}
+
+.Root__main-view {
+    border-radius: 0px !important;
+}
+.Root__right-sidebar-peekContent {
+    border-radius: 0px !important;
+}
+
+body,
+.Root,
+.Root__top-container,
+div[class*="Root__top-container"],
+.main-view-container,
+.main-view-container__scroll-node-child,
+.main-yourLibraryX-library,
+.main-navBar-navBar,
+.main-rootlist-wrapper,
+div[class*="Root__main-view"],
+div[class*="Root__left-sidebar"],
+div[class*="Root__right-sidebar"],
+.main-home-homeHeader,
+.main-entityHeader-background,
+.main-entityHeader-overlay {
+    background: transparent !important;
+    background-color: var(--xumi-main-primary) !important;
+}
+
+.main-yourLibraryX-libraryRootlist {
+    padding: 0 !important;
+    gap: 0 !important;
+}
+
+.main-rootlist-wrapper {
+    padding-left: 4px !important;
+    
+}
+
+.main-trackList-trackListContainer .main-rootlist-wrapper {
+    padding-left: 0px !important;
+    padding-block:5px !important;
+    padding-inline: 5px !important;
+    border-radius: 10px;
+}
+
+.main-trackList-trackListRow {
+    border-radius: 10px !important;
+}
+
+.main-view-container__scroll-node-child {
+    background: transparent !important;
+}
+.main-view-container {
+    background: transparent !important;
+}
+
+/* Glass cards and rows */
+.main-card-card,
+.main-contextMenu-menu {
+    background: rgb(63 63 63 / 80%) !important;
+    border: 1px solid rgb(255 255 255 / 20%) !important;
+    backdrop-filter: blur(7px);
+}
+
+/* (Native controls hidden via --transparent-window-controls flag) */
+.main-card-card,
+.main-contextMenu-menu {
+    border-radius: var(--border-radius) !important;
+}
+
+/* Fixed transparent header: bar with home, search, feed, user */
+header,
+header[data-testid="top-bar"],
+.main-topBar-container,
+.main-topBar-topbar,
+.main-topBar-background,
+.main-topBar-overlay,
+.Root__topContainerTopBar,
+.main-rootlist-topBar {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+.Root__globalNav,
+div[class*="Root__globalNav"] {
+    background: transparent !important;
+    background-color: var(--xumi-main-primary) !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 100 !important;
+    padding: 0px !important;
+    margin: 0px;
+}
+/* Marketplace / custom navlinks: same style as window buttons */
+.custom-navlinks-scrollable_container button.custom-navlink,
+button.custom-navlink {
+    width: 40px !important;
+    height: 32px !important;
+    min-width: 40px !important;
+    border-radius: var(--xumi-wc-radius) !important;
+    background: var(--xumi-wc-bg) !important;
+    border: none !important;
+    color: var(--xumi-wc-icon) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    transition:
+        background 0.12s ease,
+        color 0.12s ease !important;
+}
+.custom-navlinks-scrollable_container button.custom-navlink svg,
+button.custom-navlink svg {
+    width: 16px !important;
+    height: 16px !important;
+}
+.custom-navlinks-scrollable_container button.custom-navlink:hover,
+button.custom-navlink:hover {
+    background: var(--xumi-wc-hover) !important;
+    color: var(--xumi-wc-icon-hover) !important;
+    transform: none !important;
+}
+.custom-navlinks-scrollable_container button.custom-navlink:active,
+button.custom-navlink:active {
+    opacity: 0.7 !important;
+}
+/* Home + search: same style as window buttons */
+.main-globalNav-searchContainer {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--xumi-wc-gap) !important;
+}
+button.main-globalNav-link-icon {
+    width: 45px !important;
+    height: 37px !important;
+    min-width: 45px !important;
+    border-radius: var(--xumi-wc-radius) !important;
+    background: var(--xumi-wc-bg) !important;
+    border: none !important;
+    color: var(--xumi-wc-icon) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    transition:
+        background 0.12s ease,
+        color 0.12s ease !important;
+}
+button.main-globalNav-link-icon svg {
+    width: 16px !important;
+    height: 16px !important;
+}
+button.main-globalNav-link-icon:hover {
+    background: var(--xumi-wc-hover) !important;
+    color: var(--xumi-wc-icon-hover) !important;
+    transform: none !important;
+}
+button.main-globalNav-link-icon:active {
+    opacity: 0.7 !important;
+}
+/* Compact search */
+.main-globalNav-searchInputSection,
+div[class*="searchInputSection"] {
+    height: 40px !important;
+    min-height: 40px !important;
+    max-width: 370px !important;
+    border-radius: var(--xumi-wc-radius) !important;
+    background: var(--xumi-wc-bg) !important;
+    border: none !important;
+    font-size: 13px !important;
+    transition: background 0.12s ease !important;
+    padding: 0px !important;
+}
+.main-globalNav-searchInputSection:hover,
+.main-globalNav-searchInputSection:focus-within {
+    background: var(--xumi-wc-hover) !important;
+}
+.main-globalNav-searchInputSection input::placeholder {
+    color: var(--xumi-wc-icon) !important;
+}
+/* Inner magnifier at the same size as the rest (16px) */
+.main-globalNav-searchInputSection .e-10810-form-input-icon__icon--leading svg,
+.main-globalNav-searchInputSection
+    .e-10810-form-input-icon__icon--leading
+    .e-10810-icon {
+    width: 16px !important;
+    height: 16px !important;
+}
+.main-globalNav-searchInputSection
+    .e-10810-form-input-icon__icon--leading
+    button {
+    color: var(--xumi-wc-icon) !important;
+}
+/* Trailing icons (clear + browse) at the same size */
+.main-globalNav-searchInputSection .e-10810-form-input-icon__icon--trailing svg,
+.main-globalNav-searchInputSection
+    .e-10810-form-input-icon__icon--trailing
+    .e-10810-icon,
+.main-globalNav-browseButtonWrapper svg,
+.main-globalNav-browseButtonWrapper .e-10810-icon {
+    width: 16px !important;
+    height: 16px !important;
+}
+.main-globalNav-browseButtonWrapper button {
+    color: var(--xumi-wc-icon) !important;
+}
+.main-globalNav-browseButtonWrapper button:hover {
+    color: var(--xumi-wc-icon-hover) !important;
+}
+/* Buddy Feed: same style as window buttons */
+.main-topBar-buddyFeed {
+    width: 40px !important;
+    height: 32px !important;
+    min-width: 40px !important;
+    border-radius: var(--xumi-wc-radius) !important;
+    background: var(--xumi-wc-bg) !important;
+    border: none !important;
+    color: var(--xumi-wc-icon) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    transition:
+        background 0.12s ease,
+        color 0.12s ease !important;
+}
+.main-topBar-buddyFeed svg {
+    width: 16px !important;
+    height: 16px !important;
+}
+.main-topBar-buddyFeed:hover {
+    background: var(--xumi-wc-hover) !important;
+    color: var(--xumi-wc-icon-hover) !important;
+    transform: none !important;
+}
+.main-topBar-buddyFeed:active {
+    opacity: 0.7 !important;
+}
+/* The gray background comes from the inner form: force it transparent */
+.main-userWidget-box {
+    cursor: pointer !important;
+    background: var(--xumi-wc-bg) !important;
+    background-color: var(--xumi-wc-bg) !important;
+    flex-shrink: 0 !important;
+    width: 40px !important;
+    height: 32px !important;
+    border: none !important;
+    border-radius: var(--xumi-wc-radius) !important;
+    color: var(--xumi-wc-icon) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    transition:
+        background 0.12s ease,
+        color 0.12s ease !important;
+}
+.main-userWidget-box:hover {
+    background: var(--xumi-wc-hover) !important;
+    background-color: var(--xumi-wc-hover) !important;
+    color: var(--xumi-wc-icon-hover) !important;
+    transform: none !important;
+}
+.main-userWidget-box:active {
+    opacity: 0.7 !important;
+}
+.main-userWidget-box img {
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 50% !important;
+}
+/* The gray background comes from the inner form: force it transparent */
+.main-globalNav-searchInputContainer,
+.main-globalNav-searchInputContainer .main-topBar-searchBar,
+input.main-topBar-searchBar.x-searchInput-searchInputInput {
+    background: transparent !important;
+    background-color: var(--xumi-wc-hover) !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: var(--xumi-wc-radius) !important;
+    color: var(--xumi-wc-icon-hover) !important;
+    cursor: text !important;
+    height: 40px !important;
+    min-height: 40px !important;
+}
+.main-globalNav-searchInputContainer .main-topBar-searchBar:placeholder-shown {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    height: 40px !important;
+    max-height: 40px !important;
+    min-height: 40px !important;
+    font-size: 14px !important;
+}
+/* Header floating above the content (no offset) */
+/* The black comes from the parent: make it transparent so the header has no background */
+.Root__top-container,
+div[class*="Root__top-container"] {
+    background: transparent !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+}
+.main-navBar-navBar {
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+.Root__nav-bar,
+div[class*="Root__nav-bar"] {
+    background-color: transparent !important;
+}
+
+.main-yourLibraryX-entryPoints {
+    border-radius: 0px !important;
+}
+
+.main-nowPlayingBar-nowPlayingBar {
+    height: 56px !important;
+}
+
+/* Floating bottom player, detached and fully rounded */
+.main-nowPlayingBar-container {
+    position: fixed !important;
+    left: 50% !important;
+    bottom: 20px !important;
+    transform: translateX(-50%) !important;
+    width: min(880px, calc(100vw - 400px)) !important;
+    min-width: 480px !important;
+    margin: 0 !important;
+    border-radius: 999px !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    background: rgb(63 63 63 / 65%) !important;
+    backdrop-filter: blur(20px) saturate(1.4) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(1.4) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45) !important;
+    overflow: hidden;
+    z-index: 100 !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-left: 6px !important;
+    padding-right: 15px !important;
+}
+
+/* Fully round thumbnail */
+.main-nowPlayingBar-container img,
+.main-nowPlayingWidget-coverArt img,
+.main-coverSlotCollapsed-container,
+.main-nowPlayingWidget-coverArt .cover-art {
+    border-radius: 50% !important;
+}
+
+/* Rounded buttons */
+.main-playButton-button,
+.main-addButton-button {
+    border-radius: 50% !important;
+}
+
+/* Subtle scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+
+/* Typography */
+body {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    letter-spacing: 0.01em;
+}
+
+/* ===== Xumi Config: hide player icons ===== */
+body.xumi-hide-shuffle [data-testid="control-button-shuffle"],
+body.xumi-hide-shuffle footer button[aria-label*="huffle" i],
+body.xumi-hide-shuffle footer button[aria-label*="leatorio" i] {
+    display: none !important;
+}
+body.xumi-hide-prev [data-testid="control-button-skip-back"] {
+    display: none !important;
+}
+body.xumi-hide-next [data-testid="control-button-skip-forward"] {
+    display: none !important;
+}
+body.xumi-hide-repeat [data-testid="control-button-repeat"] {
+    display: none !important;
+}
+body.xumi-hide-play [data-testid="control-button-play"],
+body.xumi-hide-play [data-testid="control-button-playpause"],
+body.xumi-hide-play footer button[aria-label*="Pause" i],
+body.xumi-hide-play footer button[aria-label*="Reproduc" i] {
+    display: none !important;
+}
+/* Only the exact Play button (avoids hiding the whole player) */
+body.xumi-hide-play footer button[aria-label="Play" i] {
+    display: none !important;
+}
+/* ===== App background from the cover (blur + fade) ===== */
+#xumi-bg {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    background-size: cover !important;
+    background-position: center !important;
+    filter: blur(15px) brightness(0.4) !important;
+    opacity: 0.3 !important;
+    pointer-events: none !important;
+    transition: opacity 0.45s ease-in-out !important;
+}
+#xumi-bg.xumi-bg-fadeout {
+    opacity: 0 !important;
+}
+/* Keep the content above the background */
+.Root__top-container,
+div[class*="Root__top-container"] {
+    position: relative;
+    z-index: 1;
+}
+body.xumi-hide-lyrics [data-testid="control-button-lyrics"],
+body.xumi-hide-lyrics footer button[aria-label*="yrics" i],
+body.xumi-hide-lyrics footer button[aria-label*="etra" i] {
+    display: none !important;
+}
+body.xumi-hide-mini [data-testid="control-button-miniplayer"],
+body.xumi-hide-mini footer button[aria-label*="mini" i] {
+    display: none !important;
+}
+body.xumi-hide-volume [data-testid="volume-bar"] {
+    display: none !important;
+}
+body.xumi-hide-devices [data-testid="control-button-connect"] {
+    display: none !important;
+}
+body.xumi-hide-queue [data-testid="control-button-queue"] {
+    display: none !important;
+}
+body.xumi-hide-cover [data-testid="cover-art-image"],
+body.xumi-hide-cover .main-nowPlayingWidget-coverArt {
+    display: none !important;
+}
+/* Hide Now Playing view */
+body.xumi-hide-npv .Root__right-sidebar,
+body.xumi-hide-npv aside[class*="right-sidebar"],
+body.xumi-hide-npv .Root__right-sidebar-peekContent {
+  display: none !important;
+}
+
+/* ===== Marketplace extension cards ===== */
+.main-card-card.marketplace-card--extension ,
+.main-card-card.marketplace-card--snippet,
+.main-card-card.marketplace-card--app {
+    background: rgb(66 66 66 / 65%) !important;
+    border: 1px solid rgb(166 166 166 / 8%) !important;
+    border-radius: 6px !important;
+    overflow: hidden !important;
+    transition:
+        transform 0.15s ease,
+        border-color 0.15s ease,
+        box-shadow 0.15s ease !important;
+}
+.main-card-card.marketplace-card--extension:hover,
+.main-card-card.marketplace-card--snippet:hover,
+.main-card-card.marketplace-card--app:hover {
+    transform: translateY(-3px) !important;
+    border-color: rgb(125 125 125 / 50%) !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), 0 0 0 1px rgb(66 66 66 / 25%) !important;
+}
+.main-card-card.marketplace-card--extension .main-card-imageContainer,
+.main-card-card.marketplace-card--snippet .main-card-imageContainer,
+.main-card-card.marketplace-card--app .main-card-imageContainer {
+    border-radius: 12px 12px 0 0 !important;
+    overflow: hidden !important;
+}
+.main-card-card.marketplace-card--extension .main-cardImage-image,
+.main-card-card.marketplace-card--snippet .main-cardImage-image,
+.main-card-card.marketplace-card--app .main-cardImage-image {
+    border-radius: 0 !important;
+    transition: transform 0.25s ease !important;
+}
+.main-card-card.marketplace-card--extension:hover .main-cardImage-image,
+.main-card-card.marketplace-card--snippet:hover .main-cardImage-image,
+.main-card-card.marketplace-card--app:hover .main-cardImage-image {
+    transform: scale(1.04) !important;
+}
+/* ===== Marketplace extension cards: horizontal layout ===== */
+.marketplace-grid {
+    --minimumColumnWidth: 340px !important;
+    --grid-gap: 9px !important;
+}
+.main-card-card.marketplace-card--extension ,
+.main-card-card.marketplace-card--snippet,
+.main-card-card.marketplace-card--app {
+    padding: 0 !important;
+}
+.main-card-card.marketplace-card--extension .main-card-draggable,
+.main-card-card.marketplace-card--snippet .main-card-draggable,
+.main-card-card.marketplace-card--app .main-card-draggable {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 0 !important;
+}
+.main-card-card.marketplace-card--extension .main-card-imageContainer,
+.main-card-card.marketplace-card--snippet .main-card-imageContainer,
+.main-card-card.marketplace-card--app .main-card-imageContainer {
+    flex-shrink: 0 !important;
+    width: 96px !important;
+    height: 96px !important;
+    border-radius: 0 !important;
+}
+.main-card-card.marketplace-card--extension .main-cardImage-imageWrapper,
+.main-card-card.marketplace-card--snippet .main-cardImage-imageWrapper,
+.main-card-card.marketplace-card--app .main-cardImage-imageWrapper,
+.main-card-card.marketplace-card--extension .main-cardImage-imageWrapper > div,
+.main-card-card.marketplace-card--snippet .main-cardImage-imageWrapper > div,
+.main-card-card.marketplace-card--app .main-cardImage-imageWrapper > div {
+    width: 96px !important;
+    height: 96px !important;
+}
+.main-card-card.marketplace-card--extension .main-card-cardMetadata,
+.main-card-card.marketplace-card--snippet .main-card-cardMetadata,
+.main-card-card.marketplace-card--app .main-card-cardMetadata {
+    flex: 1 !important;
+    min-width: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    padding: 0 !important;
+}
+.main-card-card.marketplace-card--extension .main-cardHeader-text,
+.main-card-card.marketplace-card--snippet .main-cardHeader-text,
+.main-card-card.marketplace-card--app .main-cardHeader-text {
+    font-size: 18px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+/* Hide description and tags */
+.main-card-card.marketplace-card--extension .marketplace-card-desc,
+.main-card-card.marketplace-card--snippet .marketplace-card-desc,
+.main-card-card.marketplace-card--app .marketplace-card-desc,
+.main-card-card.marketplace-card--extension .marketplace-card__bottom-meta,
+.main-card-card.marketplace-card--snippet .marketplace-card__bottom-meta,
+.main-card-card.marketplace-card--app .marketplace-card__bottom-meta {
+    display: none !important;
+}
+/* Visible stars */
+.marketplace-cardSubHeader {
+    display: flex !important;
+    align-items: start !important;
+    gap: 4px !important;
+    margin-bottom :4px !important;
+    font-size: 14px !important;
+    opacity: 0.85 !important;
+}
+.main-card-card.marketplace-card--extension .main-card-PlayButtonContainer,
+.main-card-card.marketplace-card--snippet .main-card-PlayButtonContainer,
+.main-card-card.marketplace-card--app .main-card-PlayButtonContainer {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(6px) !important;
+    transition:
+        opacity 0.15s ease,
+        transform 0.15s ease,
+        visibility 0.15s ease !important;
+}
+.main-card-card.marketplace-card--extension:hover,
+.main-card-card.marketplace-card--snippet:hover,
+.main-card-card.marketplace-card--app:hover,
+.main-card-card.marketplace-card--extension:hover .main-card-PlayButtonContainer,
+.main-card-card.marketplace-card--snippet:hover .main-card-PlayButtonContainer,
+.main-card-card.marketplace-card--app:hover .main-card-PlayButtonContainer,
+.main-card-card.marketplace-card--extension .main-card-PlayButtonContainerVisible,
+.main-card-card.marketplace-card--snippet .main-card-PlayButtonContainerVisible,
+.main-card-card.marketplace-card--app .main-card-PlayButtonContainerVisible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    pointer-events: auto !important;
+}
+.marketplace-installButton {
+    width: 40px !important;
+    height: 40px !important;
+    background: #373737 !important;
+    border: 1px solid #595959;
+    color: #fff !important;
+    transition:
+        transform 0.12s ease,
+        background 0.12s ease !important;
+}
+.marketplace-installButton:hover {
+    background: #707070 !important;
+    transform: scale(1.08) !important;
+}
+.marketplace-installButton:active {
+    transform: scale(0.95) !important;
+}
+.main-card-PlayButtonContainer {
+    box-shadow: 0px 0px 0px transparent !important;
+}
+
+.Dropdown-arrow-wrapper {
+    padding-left:14px !important;
+}
+
+/* ===== Config button in navbar ===== */
+#xumi-config-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 32px;
+    min-width: 40px;
+    border-radius: var(--xumi-wc-radius);
+    background: var(--xumi-wc-bg);
+    border: none;
+    color: var(--xumi-wc-icon);
+    cursor: pointer;
+    margin-left: 8px;
+    padding: 0;
+    flex-shrink: 0;
+    transition: background 0.12s ease, color 0.12s ease;
+}
+#xumi-config-btn:hover {
+    background: var(--xumi-wc-hover);
+    color: var(--xumi-wc-icon-hover);
+}
+#xumi-config-btn:active {
+    opacity: 0.7;
+}
+#xumi-config-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
+/* ===== Xumi modal: segmented panel matching the theme ===== */
+#xumi-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 60px 24px 120px 24px;
+    pointer-events: auto;
+}
+#xumi-modal {
+    width: 340px;
+    max-height: calc(100vh - 220px);
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 4px;
+    color: #e8e8f0;
+    box-shadow: 0 16px 64px rgba(0, 0, 0, 0.6);
+}
+#xumi-modal h2 {
+    margin: 0;
+    padding: 10px 14px 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--xumi-wc-icon);
+}
+#xumi-modal p {
+    margin: 0;
+    padding: 0 14px 10px;
+    font-size: 12px;
+    opacity: 0.6;
+}
+.xumi-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 7px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    background: transparent;
+    transition: background 0.12s ease;
+}
+.xumi-row:hover {
+    background: var(--xumi-wc-hover);
+}
+.xumi-row .xumi-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--xumi-wc-icon);
+}
+.xumi-row:hover .xumi-label {
+    color: var(--xumi-wc-icon-hover);
+}
+.xumi-row .xumi-label svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+.xumi-row .xumi-label img {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+/* Switch */
+.xumi-switch {
+    position: relative;
+    width: 40px;
+    height: 22px;
+    flex-shrink: 0;
+}
+.xumi-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.xumi-slider {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    background: #3a3a4d;
+    border-radius: 999px;
+    transition: 0.2s;
+}
+.xumi-slider:before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 3px;
+    top: 3px;
+    background: #fff;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+.xumi-switch input:checked + .xumi-slider {
+    background: #7c5cff;
+}
+.xumi-switch input:checked + .xumi-slider:before {
+    transform: translateX(18px);
+}
+
+/* ===== Marketplace tabBar: segmented control ===== */
+.marketplace-tabBar-nav {
+    display: flex !important;
+    justify-content: flex-start !important;
+}
+.marketplace-tabBar-header {
+    width: 500px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 2px !important;
+    margin: 0 !important;
+    padding: 4px !important;
+    list-style: none !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 25px !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+}
+.marketplace-tabBar-headerItem {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.marketplace-tabBar-headerItem .marketplace-tabBar-headerItemLink {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 6px 12px !important;
+    border-radius: 25px !important;
+    color: var(--xumi-wc-icon) !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+    border-bottom: none !important;
+    transition: background 0.12s ease, color 0.12s ease !important;
+}
+.marketplace-tabBar-headerItem .marketplace-tabBar-headerItemLink:hover {
+    background: var(--xumi-wc-hover) !important;
+    color: var(--xumi-wc-icon-hover) !important;
+}
+.marketplace-tabBar-headerItem .marketplace-tabBar-headerItemLink.marketplace-tabBar-active {
+    background: var(--xumi-main-primary) !important;
+    color: #fff !important;
+}
+
+/* ===== Marketplace theme cards: image with overlay ===== */
+.main-card-card.marketplace-card--theme {
+    background: rgba(20, 20, 30, 0.75) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: relative !important;
+    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease !important;
+}
+.main-card-card.marketplace-card--theme:hover {
+    transform: translateY(-3px) !important;
+    border-color: rgba(124, 92, 255, 0.5) !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45) !important;
+}
+.main-card-card.marketplace-card--theme .main-card-draggable {
+    height: 100%;
+    padding: 0 !important;
+    position: relative !important;
+}
+/* The image covers the WHOLE card as background */
+.main-card-card.marketplace-card--theme .main-card-imageContainer {
+    position: absolute !important;
+    inset: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+    overflow: hidden !important;
+}
+.main-card-card.marketplace-card--theme .main-cardImage-imageWrapper,
+.main-card-card.marketplace-card--theme .main-cardImage-imageWrapper > div {
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.main-card-card.marketplace-card--theme .main-cardImage-image {
+    display: block !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+    transition: transform 0.25s ease !important;
+}
+.main-card-card.marketplace-card--theme:hover .main-cardImage-image {
+    transform: scale(1.04) !important;
+}
+.main-card-card.marketplace-card--theme .main-card-imageContainer::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.55) 45%, transparent 70%) !important;
+    pointer-events: none !important;
+}
+.main-card-card.marketplace-card--theme .main-card-cardMetadata {
+    position: relative !important;
+    z-index: 1 !important;
+    margin-top: 0 !important;
+    padding: 120px 12px 12px !important;
+}
+.main-card-card.marketplace-card--theme .main-cardHeader-text {
+    font-size: 15px !important;
+    color: #fff !important;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8) !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+.main-card-card.marketplace-card--theme .marketplace-cardSubHeader {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+.main-card-card.marketplace-card--theme .marketplace-card-desc {
+    display: none !important;
+}
+.main-card-card.marketplace-card--theme .marketplace-card__tag {
+    display: none !important;
+}
+.main-card-card.marketplace-card--theme .marketplace-card__tag[data-tag="external JS"] {
+    display: inline-block !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    padding: 3px 8px !important;
+    border-radius: 25px !important;
+    background: rgba(240, 178, 56, 0.25) !important;
+    border: 1px solid rgba(240, 178, 56, 0.5) !important;
+    color: #ffd88a !important;
+}
+
+.main-card-card.marketplace-card--theme .marketplace-card__tags-more-btn {
+    display: none !important;
+}
+.main-card-card.marketplace-card--theme .main-card-PlayButtonContainer {
+    position: absolute !important;
+    top: 8px !important;
+    right: 8px !important;
+    z-index: 2 !important;
+    opacity: 0 !important;
+    transform: translateY(-4px) !important;
+    transition: opacity 0.15s ease, transform 0.15s ease !important;
+}
+.main-card-card.marketplace-card--theme:hover .main-card-PlayButtonContainer {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* ===== Dropdowns (sort / More): Xumi style ===== */
+.Dropdown-menu {
+    background: #1a1a26 !important;
+    background-color: #1a1a26 !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6) !important;
+    overflow-y: auto !important;
+    padding: 4px !important;
+}
+.Dropdown-option,
+.Dropdown-menu .Dropdown-option {
+    border-radius: 8px !important;
+    color: var(--xumi-wc-icon) !important;
+    font-size: 13px !important;
+    padding: 8px 12px !important;
+    cursor: pointer !important;
+}
+.Dropdown-option:hover,
+.Dropdown-option.is-selected {
+    background: var(--xumi-wc-hover) !important;
+    color: var(--xumi-wc-icon-hover) !important;
+}
+
+/* ===== Marketplace header: segmented bar like the tabs ===== */
+.marketplace-header {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 4px !important;
+    flex-wrap: wrap !important;
+    padding: 4px !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 46px !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+}
+.marketplace-header__left,
+.marketplace-header__right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+.marketplace-header__label {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: var(--xumi-wc-icon) !important;
+    margin: 0 !important;
+    padding-left: 10px !important;
+}
+/* Sort dropdown */
+.marketplace-sortBox .Dropdown-control,
+.marketplace-sortBox-header .Dropdown-control {
+    height: 32px !important;
+    min-height: 32px !important;
+    border-radius: 8px !important;
+    background: transparent !important;
+    border: none !important;
+    color: var(--xumi-wc-icon-hover) !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    padding: 0 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    cursor: pointer !important;
+    transition: background 0.12s ease !important;
+}
+.marketplace-sortBox .Dropdown-control:hover {
+    background: var(--xumi-wc-hover) !important;
+}
+/* Search */
+.searchbar--bar__wrapper {
+    display: flex !important;
+    align-items: center !important;
+}
+.searchbar-bar {
+    height: 36px !important;
+    min-height: 36px !important;
+    max-width: 400px !important;
+    width: 400px !important;
+    border-radius: 25px !important;
+    background: var(--xumi-wc-hover) !important;
+    border: none !important;
+    outline: none !important;
+    color: var(--xumi-wc-icon-hover) !important;
+    font-size: 13px !important;
+    padding: 0 14px !important;
+    transition: background 0.12s ease !important;
+}
+.searchbar-bar::placeholder {
+    color: var(--xumi-wc-icon) !important;
+}
+.searchbar-bar:hover,
+.searchbar-bar:focus {
+    background: var(--xumi-wc-hover) !important;
+}
+/* Settings button */
+.marketplace-header-icon-button {
+    width: 40px !important;
+    height: 32px !important;
+    min-width: 40px !important;
+    border-radius: 25px !important;
+    background: transparent !important;
+    border: none !important;
+    color: var(--xumi-wc-icon) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    cursor: pointer !important;
+    transition: background 0.12s ease, color 0.12s ease !important;
+}
+.marketplace-header-icon-button svg {
+    width: 16px !important;
+    height: 16px !important;
+}
+.marketplace-header-icon-button:hover {
+    background: var(--xumi-wc-hover) !important;
+    color: var(--xumi-wc-icon-hover) !important;
+    transform: none !important;
+}
+.marketplace-header-icon-button:active {
+    opacity: 0.7 !important;
+}
+
+.main-home-filterChipsSection {
+    background-color: transparent !important;
+}
+
+.main-home-filterChipsContainer {
+    position: relative !important;
+}
+
+.main-home-filterChipsContainer .main-home-filterChipsSectionActive::after {
+    background: rgb(63 63 63 / 80%) !important;
+    border: 1px solid rgb(255 255 255 / 20%) !important;
+    backdrop-filter: blur(7px);
+}
+
+.main-entityHeader-backgroundColor {
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+.main-actionBarBackground-background {
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+.main-yourLibraryX-libraryContainer {
+    background-color: transparent !important;
+}
+
+.main-trackList-trackListHeader {
+    background: transparent !important;
+    background-color: var(--xumi-main-primary) !important;
+    border-bottom: 0px !important;
+    box-shadow: none !important;
+    backdrop-filter: blur(7px);
+}
+
+.main-topBar-background {
+    background-color: var(--xumi-main-primary) !important;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    backdrop-filter: blur(7px);
+}
+
+.centered-layout .contentSpacing {
+    padding: 22px !important;
+}
+
+.main-entityHeader-container.main-entityHeader-containerNormal {
+    margin-top: 20px;
+}
+
+.e-10810-button-primary__inner {
+    background: #5d5d5d !important;
+}
+
+.playlist-playlist-actionBarBackground-background {
+    background-image: none !important;
+}
+
+.playlist-playlist-playlistContent {
+    background: transparent !important;
+}
+
+.main-contextMenu-tippy {
+    background: rgb(63 63 63 / 80%) !important;
+    backdrop-filter: blur(7px);
+}
+
+.main-globalNav-contentRight {
+    margin-left: auto;
+}
+
+.Root__now-playing-bar {
+    background: transparent !important;
+}
+
+#marketplace-readme {
+    margin: 20px 0px !important;
+    background: transparent !important;
+}
+
+
+.main-globalNav-searchInputWrapper #search-dropdown > div {
+    backdrop-filter: blur(7px);
+    border: 1px solid rgb(255 255 255 / 20%) !important;
+}
