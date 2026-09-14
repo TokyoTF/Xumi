@@ -30,6 +30,12 @@
 }
 
 /* Custom window buttons */
+body.xumi-custom-wc .Titlebar {
+    display: none !important;
+    height: 1px !important;
+    min-height: 1px !important;
+    max-height: 1px !important;
+}
 #xumi-wc {
     display: flex;
     align-items: center;
