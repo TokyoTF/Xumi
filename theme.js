@@ -64,7 +64,7 @@
       case "lyrics": return strict('[data-testid="control-button-lyrics"]') || byLabel(/lyrics|letra/i);
       case "mini": return strict('[data-testid="control-button-miniplayer"], [data-testid="mini-player"]') || byLabel(/mini/i);
       case "volume": return strict('[data-testid="volume-bar"]') || root.querySelector('input[type="range"]')?.closest("div");
-      case "devices": return strict('[data-testid="control-button-connect"]') || byLabel(/dispositiv/i);
+      case "devices": return strict('[data-testid="control-button-connect"]') || byLabel(/dispositiv|device|connect/i);
       case "queue": return strict('[data-testid="control-button-queue"]') || byLabel(/^cola$|^queue$/i);
       case "fullscreen": return byLabel(/pantalla completa|full screen/i);
       case "cover": return strict('[data-testid="cover-art-image"]') || root.querySelector("img");
