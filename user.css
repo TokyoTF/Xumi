@@ -1297,7 +1297,7 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     background: transparent !important;
 }
 
-[data-tippy-root] #context-menu > div {
+[data-tippy-root] #context-menu > div:has(> span) {
     background: #00000078 !important;
     backdrop-filter: blur(8px);
     border-radius: 64px !important;
@@ -1385,4 +1385,8 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
 }
 .e-10860-icon {
     width: 18px !important;
+}
+
+.e-10860-button-primary__inner {
+    color:white;
 }
