@@ -118,7 +118,7 @@ div[class*="Root__right-sidebar"],
     background-color: var(--xumi-main-primary) !important;
 }
 
-.main-view-container__scroll-node-child main > div > div{
+.main-view-container__scroll-node-child main > div > div:nth-child(1){
     background-color: transparent !important;
     background-image: none !important;
     display: none !important;
