@@ -134,9 +134,9 @@ div[class*="Root__right-sidebar"],
 }
 
 .main-yourLibraryX-libraryRootlist {
-    padding: 0 !important;
     gap: 0 !important;
 }
+
 
 .main-rootlist-wrapper {
     padding-left: 4px !important;
@@ -215,7 +215,7 @@ header[data-testid="top-bar"],
 .Root__globalNav,
 div[class*="Root__globalNav"] {
     background: transparent !important;
-    background-color: var(--xumi-main-primary) !important;
+    background-color: #6d6d6dc2 !important;
     background-image: none !important;
     box-shadow: none !important;
     border: none !important;
@@ -229,7 +229,7 @@ div[class*="Root__globalNav"] {
 .custom-navlinks-scrollable_container button.custom-navlink,
 button.custom-navlink {
     width: 45px !important;
-    height: 37px !important;
+    height: 39.99px !important;
     min-width: 45px !important;
     border-radius: var(--xumi-wc-radius) !important;
     background: var(--xumi-wc-bg) !important;
@@ -264,7 +264,7 @@ button.custom-navlink:active {
 }
 button.main-globalNav-link-icon {
     width: 45px !important;
-    height: 37px !important;
+    height: 39.99px !important;
     min-width: 45px !important;
     border-radius: var(--xumi-wc-radius) !important;
     background: var(--xumi-wc-bg) !important;
@@ -290,7 +290,7 @@ button.main-globalNav-link-icon:hover {
 button.main-globalNav-link-icon:active {
     opacity: 0.7 !important;
 }
-/* Compact search */
+/* Compact search (legacy) */
 .main-globalNav-searchInputSection,
 div[class*="searchInputSection"] {
     height: 40px !important;
@@ -309,6 +309,62 @@ div[class*="searchInputSection"] {
 }
 .main-globalNav-searchInputSection input::placeholder {
     color: var(--xumi-wc-icon) !important;
+}
+/* New search (stable selectors: hashed wrapper UQOKLF9... changes each update) */
+form[role="search"][data-encore-id="formInputIcon"],
+form[data-encore-id="formInputIcon"]:has(input[data-top-bar-search="true"]) {
+    height: 40px !important;
+    min-height: 40px !important;
+    max-width: 420px !important;
+    border-radius: var(--xumi-wc-radius) !important;
+    background: var(--xumi-wc-bg) !important;
+    border: none !important;
+    font-size: 13px !important;
+    transition: background 0.12s ease !important;
+    padding: 0px !important;
+}
+form[role="search"][data-encore-id="formInputIcon"]:hover,
+form[role="search"][data-encore-id="formInputIcon"]:focus-within {
+    background: var(--xumi-wc-hover) !important;
+}
+input[data-top-bar-search="true"] {
+    background: transparent !important;
+    background-color: var(--background-tinted-base) !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    color: var(--xumi-wc-icon-hover) !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    font-size: 14px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+input[data-top-bar-search="true"]::placeholder {
+    color: var(--xumi-wc-icon) !important;
+}
+input[data-top-bar-search="true"]:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+/* Search icons at the same size as the rest (16px, version-agnostic) */
+form[role="search"][data-encore-id="formInputIcon"] [data-encore-id="icon"],
+form[role="search"] [data-encore-id="icon"] {
+    width: 16px !important;
+    height: 16px !important;
+}
+form[role="search"] button[aria-label="Search"],
+form[role="search"] button[aria-label="Browse"],
+form[role="search"] button[aria-label="Clear search field"] {
+    color: var(--xumi-wc-icon) !important;
+    background: transparent !important;
+    border: none !important;
+}
+form[role="search"] button[aria-label="Search"]:hover,
+form[role="search"] button[aria-label="Browse"]:hover,
+form[role="search"] button[aria-label="Clear search field"]:hover {
+    color: var(--xumi-wc-icon-hover) !important;
 }
 /* Search icons at the same size as the rest (16px, version-agnostic) */
 .main-globalNav-searchInputSection [data-encore-id="icon"] {
@@ -431,6 +487,12 @@ div[class*="Root__nav-bar"] {
 
 .main-nowPlayingBar-nowPlayingBar {
     height: 56px !important;
+}
+.main-nowPlayingBar-nowPlayingBar .main-nowPlayingBar-left button[data-testid]{
+    background-color: transparent !important;
+}
+.main-nowPlayingBar-nowPlayingBar .main-nowPlayingBar-left button[data-testid] > div > div {
+    border-radius: 50% !important;
 }
 
 /* Floating bottom player, detached and fully rounded */
@@ -555,10 +617,19 @@ body.xumi-hide-cover [data-testid="cover-art-image"],
 body.xumi-hide-cover .main-nowPlayingWidget-coverArt {
     display: none !important;
 }
-/* Hide Now Playing view */
+/* Hide Now Playing view (stable selectors: hashed classes change each update) */
 body.xumi-hide-npv .Root__right-sidebar,
 body.xumi-hide-npv aside[class*="right-sidebar"],
-body.xumi-hide-npv .Root__right-sidebar-peekContent {
+body.xumi-hide-npv .Root__right-sidebar-peekContent,
+body.xumi-hide-npv #Desktop_PanelContainer_Id,
+body.xumi-hide-npv aside.NowPlayingView,
+body.xumi-hide-npv aside[aria-label="Now playing view"] {
+    display: none !important;
+}
+/* Collapse the fixed-width wrapper that holds the panel (e.g. width:420px div) */
+body.xumi-hide-npv div:has(> aside#Desktop_PanelContainer_Id),
+body.xumi-hide-npv div:has(> aside.NowPlayingView),
+body.xumi-hide-npv div:has(> aside[aria-label="Now playing view"]) {
     display: none !important;
 }
 
@@ -1244,20 +1315,25 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     background-color: transparent !important;
 }
 
-.main-trackList-trackListHeader {
+#main-view > div.main-view-container > div.main-view-container__scroll-node div[data-scroll-size-invariant-class] {
     background: transparent !important;
     border-bottom: 0px !important;
     box-shadow: none !important;
     top:76px !important;
 }
 
-.main-trackList-trackListHeader > div > div {
+
+#main-view > div.main-view-container > div.main-view-container__scroll-node div[data-scroll-size-invariant-class] > div{
     background-color: var(--xumi-main-primary) !important;
     border-radius: 14px;
     backdrop-filter: blur(7px);
     border: 1px solid rgb(255 255 255 / 10%) !important;
 }
 
+#main-view > div.main-view-container > div.main-view-container__scroll-node div[data-scroll-size-invariant-class] > div > div{
+    border-bottom: 0px !important;
+    
+}
 .main-topBar-background {
     background-color: var(--xumi-main-primary) !important;
     border-top-left-radius: 0px !important;
@@ -1269,7 +1345,7 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     padding: 22px !important;
 }
 
-.main-entityHeader-container.main-entityHeader-containerNormal {
+.main-view-container__scroll-node-child > main > section > div[data-testid="entity-header"]{
     margin-top: 20px;
 }
 
@@ -1283,6 +1359,22 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     background-image: none !important;
 }
 
+.main-view-container__scroll-node-child > main > section > div > div:nth-child(2) > div{
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+.main-view-container__scroll-node-child > main > section > div[data-testid="entity-header"] > div{
+    background-color: transparent !important;
+    background: transparent !important;
+}
+.main-view-container__scroll-node-child > main > section > div > div:nth-child(2){
+    background-color: transparent !important;
+}
+#main-view {
+    border-radius: 0px !important;
+}
+
 /* data-encore-id and class suffixes survive Encore renames (e-10810 -> e-10860) */
 [class*="button-primary__inner"] {
     background: #00000078 !important;
@@ -1293,6 +1385,9 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     background-image: none !important;
 }
 
+#main-view > div.main-view-container > div.main-view-container__scroll-node.OV5qcAEJH6buOXykghv7 > div:nth-child(1) > div > main > section > div.KiLYXau_zZC4Y6HztjLZ > div.skbiXj4RSA0QAr5xDn9P {
+        background-image: none !important;
+}
 .playlist-playlist-playlistContent {
     background: transparent !important;
 }
@@ -1302,12 +1397,16 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     backdrop-filter: blur(8px);
     border-radius: 64px !important;
 }
+/* Más de 1 línea de texto: la pone theme.js (updateCtxRadius) al contar líneas */
+[data-tippy-root] #context-menu > div:has(> span).xumi-multiline {
+    border-radius: 10px !important;
+}
 
 .main-globalNav-contentRight {
     margin-left: auto;
 }
 
-#global-nav-bar > div.main-globalNav-contentRight > div.main-globalNav-contentRightSpacer {
+#global-nav-bar > div.main-globalNav-contentRight div:nth-child(2) {
     display: none !important;
 }
 
@@ -1315,7 +1414,7 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     background: transparent !important;
 }
 
-.main-globalNav-navLink.main-actionButtons {
+#global-nav-bar > div.main-globalNav-contentRight .main-actionButtons {
     margin-right: 42px;
 }
 
@@ -1324,7 +1423,9 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     background: transparent !important;
 }
 
-.main-globalNav-searchInputWrapper #search-dropdown > div {
+.main-globalNav-searchInputWrapper #search-dropdown > div,
+form[role="search"] ~ #search-dropdown > div,
+#search-dropdown > div {
     backdrop-filter: blur(7px);
     border: 1px solid rgb(255 255 255 / 20%) !important;
 }
@@ -1344,8 +1445,7 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
 }
 
 .before-scroll-node div > div:nth-child(1) {
-    height: 45%;
-    mask-image: linear-gradient(black, transparent);
+        mask-image: linear-gradient(black 0%, transparent 95%);
 }
 
 .main-entityHeader-container.main-entityHeader-withBackgroundImage {
@@ -1359,6 +1459,10 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     mask-image: linear-gradient(black, transparent);
 }
 
+div[data-testid="overscroll-background"]{
+    background-color: transparent !important;
+}
+
 .os-scrollbar-horizontal {
     opacity: 0 !important;
 }
@@ -1367,7 +1471,7 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     border-bottom: none !important;
 }
 
-.main-trackList-trackListContainer .main-rootlist-wrapper > div:nth-child(2)  {
+#main-view > div.main-view-container > div.main-view-container__scroll-node.OV5qcAEJH6buOXykghv7 > div:nth-child(1) > div > main > section > div.KiLYXau_zZC4Y6HztjLZ > div.WHmePp2RcjDcZf8l9fqg.gDbejgEjnpz9fEKRkCiK.r6xK0R0pC7058PXsz0GY.DioDd4ng50SNLwcMc20A.ueO1DGD8b_kDJrijm4eA.USjSBs_yujSz3xjV9lVJ.xRNHA2At8g4nMhtIbsZc.MvNkt6Bkdg17CJyEkoRc > div > div.OQsziabhrzBBDc6YI9kQ > div > div.bfY_tgYxTRckp8L2joiq > div:nth-child(2){
     background-color: var(--xumi-main-primary) !important;
     border-radius: 14px;
     padding:4px;
@@ -1375,18 +1479,84 @@ body.xumi-hide-npv .Root__right-sidebar-peekContent {
     border: 1px solid rgb(255 255 255 / 10%) !important;
 }
 
-.main-globalNav-navLink.main-actionButtons > button {
+#main-view > div.main-view-container > div.main-view-container__scroll-node.OV5qcAEJH6buOXykghv7 > div:nth-child(1) > div > main > section > div > div.NrrHwy5vCB8pNYVxc8oU > div.contentSpacing > div:nth-child(1) > div > div.ZAU9wS6jqWfJxKTQvyfH > div > div > div > div:nth-child(2){
+    background-color: var(--xumi-main-primary) !important;
+    border-radius: 14px;
+    padding:4px;
+    backdrop-filter: blur(7px);
+    border: 1px solid rgb(255 255 255 / 10%) !important;
+}
+
+#main-view > div.main-view-container > div.main-view-container__scroll-node.OV5qcAEJH6buOXykghv7 > div:nth-child(1) > div > main > section > div:nth-child(5) > div > div > div.bfY_tgYxTRckp8L2joiq > div:nth-child(2){
+    background-color: var(--xumi-main-primary) !important;
+    border-radius: 14px;
+    padding:4px;
+    backdrop-filter: blur(7px);
+    border: 1px solid rgb(255 255 255 / 10%) !important;
+}
+
+#main-view > div.main-view-container > div.main-view-container__scroll-node.OV5qcAEJH6buOXykghv7 > div:nth-child(1) > div > main > section > div:nth-child(4) > div.OQsziabhrzBBDc6YI9kQ > div > div.bfY_tgYxTRckp8L2joiq > div:nth-child(2) {
+    background-color: var(--xumi-main-primary) !important;
+    border-radius: 14px;
+    padding:4px;
+    backdrop-filter: blur(7px);
+    border: 1px solid rgb(255 255 255 / 10%) !important;
+}
+
+#main-view > div.main-view-container > div.main-view-container__scroll-node.OV5qcAEJH6buOXykghv7 > div:nth-child(1) > div > main > section > div > div.NrrHwy5vCB8pNYVxc8oU > div.contentSpacing > div:nth-child(1) > div > div.ZAU9wS6jqWfJxKTQvyfH > div > div > div > div:nth-child(2) > div:nth-child(1) > div {
+    border-radius: 14px !important;
+}
+
+#main-view > div.main-view-container > div.main-view-container__scroll-node.OV5qcAEJH6buOXykghv7 > div:nth-child(1) > div > main > section > div:nth-child(4) > div.OQsziabhrzBBDc6YI9kQ > div > div.bfY_tgYxTRckp8L2joiq > div:nth-child(2) > div:nth-child(1) > div > div {
+        border-radius: 14px !important;
+}
+
+
+#main-view > div.main-view-container > div.main-view-container__scroll-node.OV5qcAEJH6buOXykghv7 > div:nth-child(1) > div > main > section > div.KiLYXau_zZC4Y6HztjLZ > div.WHmePp2RcjDcZf8l9fqg.gDbejgEjnpz9fEKRkCiK.r6xK0R0pC7058PXsz0GY.DioDd4ng50SNLwcMc20A.ueO1DGD8b_kDJrijm4eA.USjSBs_yujSz3xjV9lVJ.xRNHA2At8g4nMhtIbsZc.MvNkt6Bkdg17CJyEkoRc > div > div.OQsziabhrzBBDc6YI9kQ > div > div.bfY_tgYxTRckp8L2joiq > div:nth-child(2) > div:nth-child(1) > div {
+    border-radius: 14px !important;
+}
+
+#main-view > div.main-view-container > div.main-view-container__scroll-node.OV5qcAEJH6buOXykghv7 > div:nth-child(1) > div > main > section > div:nth-child(5) > div > div > div.bfY_tgYxTRckp8L2joiq > div:nth-child(2) > div:nth-child(1) > div {
+    border-radius: 14px !important;
+}
+
+.main-globalNav-contentRight .main-actionButtons > button {
     background-color: transparent !important;
     width: 32px !important;
     height: 32px !important;
 }
-.main-globalNav-navLink.main-actionButtons > button span {
+.main-globalNav-contentRight .main-actionButtons > button span {
     line-height: 34px !important;
-}
-.e-10860-icon {
-    width: 18px !important;
 }
 
 .e-10860-button-primary__inner {
     color:white;
+}
+
+#Desktop_LeftSidebar_Id {
+    border-radius: 0px !important;
+}
+
+#Desktop_LeftSidebar_Id nav > div {
+    border-radius: 0px !important;
+}
+
+
+#main-view > header > div {
+    background-color: transparent !important;
+    transition: background-color 0.2s ease !important;
+    border-radius: 0px !important;
+}
+
+#main-view > header > div.xumi-header-solid {
+    background-color: #6d6d6dba !important;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    border-radius: 0px !important;
+}
+
+#main-view > header > div[style*="opacity: 1"] {
+    background-color: #6d6d6dba !important;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
 }

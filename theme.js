@@ -113,7 +113,22 @@
       if (el) el.style.display = hide ? "none" : "";
     });
     // Hide Now Playing view via CSS (enabled by default)
-    document.body.classList.toggle("xumi-hide-npv", state.hideNpv !== false);
+    // + JS backup: hashed classes change each update, so enforce inline
+    // hiding on the stable nodes (#Desktop_PanelContainer_Id / .NowPlayingView).
+    const hideNpv = state.hideNpv !== false;
+    document.body.classList.toggle("xumi-hide-npv", hideNpv);
+    try {
+      const npv = document.querySelector("#Desktop_PanelContainer_Id, aside.NowPlayingView, aside[aria-label='Now playing view']");
+      if (npv) {
+        npv.style.display = hideNpv ? "none" : "";
+        const wrap = npv.parentElement;
+        // Collapse the fixed-width wrapper (e.g. style="width: 420px")
+        if (wrap && wrap !== document.body && wrap.querySelector(":scope > aside")) {
+          const onlyNpv = Array.from(wrap.children).every((c) => c === npv || c.tagName === "ASIDE");
+          if (onlyNpv) wrap.style.display = hideNpv ? "none" : "";
+        }
+      }
+    } catch (e) {}
     // Custom window controls mode: used to collapse the native titlebar via CSS
     document.body.classList.toggle("xumi-custom-wc", state.customWc !== false);
     applyBg(state);
@@ -403,13 +418,48 @@
       meta?.appendChild(gh);
     });
   }
+  function updateCtxRadius() {
+    // CSS can't count text lines, so count line boxes here via Range rects.
+    document.querySelectorAll("[data-tippy-root] #context-menu > div").forEach((el) => {
+      const span = el.querySelector(":scope > span");
+      if (!span) { el.classList.remove("xumi-multiline"); return; }
+      let lines = 1;
+      try {
+        const range = document.createRange();
+        range.selectNodeContents(span);
+        lines = range.getClientRects().length || 1;
+      } catch (e) { return; }
+      el.classList.toggle("xumi-multiline", lines > 1);
+    });
+  }
+  let npvClosed = false; // only auto-close during the first 30s
+  // Header background follows Spotify's inline opacity (scroll fade).
+  // CSS can't compare numbers, so read opacity here and toggle a class.
+  // Threshold: tweak 0.5 up/down if you want the glass to kick in later/sooner.
+  function updateHeaderBg() {
+    const el = document.querySelector("#main-view > header > div");
+    if (!el) return;
+    let op = parseFloat(el.style.opacity);
+    if (!Number.isFinite(op)) {
+      try { op = parseFloat(getComputedStyle(el).opacity); } catch (e) { return; }
+    }
+    if (!Number.isFinite(op)) return;
+    el.classList.toggle("xumi-header-solid", op > 0.5);
+  }
   function closeNowPlayingOnStart(state) {
     if (npvClosed || state.closeNpv === false) return;
-    const peek = document.querySelector(".Root__right-sidebar-peekContent");
-    if (!peek || peek.offsetParent === null) return;
+    // Stable detection: hashed layout classes change each update, so rely on
+    // #Desktop_PanelContainer_Id / .NowPlayingView / aria-label instead of
+    // the legacy .Root__right-sidebar-peekContent (removed by Spotify).
+    const npv = document.querySelector(
+      "#Desktop_PanelContainer_Id, aside.NowPlayingView, aside[aria-label='Now playing view'], .Root__right-sidebar-peekContent"
+    );
+    if (!npv || npv.offsetParent === null || npv.style.display === "none") return;
+    if (npv.getAttribute("aria-hidden") === "true") { npvClosed = true; return; }
     const btns = Array.from(document.querySelectorAll("button"));
     const toggle =
       document.querySelector('[data-testid="control-button-now-playing-view"], [data-testid="now-playing-view-button"]') ||
+      btns.find((b) => /hide now playing view/i.test(b.getAttribute("aria-label") || "")) ||
       btns.find((b) => /now playing view/i.test(b.getAttribute("aria-label") || "")) ||
       btns.find((b) => /vista.*(reproducci|escuchando)|panel.*derech/i.test(b.getAttribute("aria-label") || ""));
     if (toggle) {
@@ -421,8 +471,8 @@
   const state = Object.assign({}, load());
   apply(state);
   updateBg();
-  new MutationObserver(() => { injectProfileItem(state); apply(state); updateBg(); processThemeCards(); injectWindowControls(state); }).observe(document.body, { childList: true, subtree: true });
+  new MutationObserver(() => { injectProfileItem(state); apply(state); updateBg(); updateHeaderBg(); updateCtxRadius(); processThemeCards(); injectWindowControls(state); }).observe(document.body, { childList: true, subtree: true });
   injectWindowControls(state); // first paint ASAP, don't wait for the interval
-  setInterval(() => { injectProfileItem(state); apply(state); updateBg(); closeNowPlayingOnStart(state); injectWindowControls(state); processThemeCards(); }, 1000);
+  setInterval(() => { injectProfileItem(state); apply(state); updateBg(); updateHeaderBg(); updateCtxRadius(); closeNowPlayingOnStart(state); injectWindowControls(state); processThemeCards(); }, 1000);
   setTimeout(() => { npvClosed = true; }, 30000); // only tries during the first 30s
 })();
